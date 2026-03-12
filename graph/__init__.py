@@ -1,15 +1,18 @@
-"""Cross-Repository Federation for ChunkHound.
+"""Dependency Graph Explorer for ChunkHound.
 
-Queries multiple ChunkHound indexes simultaneously through a single
-MCP session.  Searches fan out concurrently, results merge via
-cross-repo reranking.
+Extracts import, call, and inheritance edges during parsing and stores
+them in the database.  A ``code_graph`` MCP tool traverses relationships
+upstream or downstream.  Deep research uses graph expansion to find
+structurally connected chunks that vector search misses.
 """
 
-from chunkhound.federation.config import FederationConfig, RepoConfig
-from chunkhound.federation.service import FederatedSearchService
+from chunkhound.graph.models import Edge, EdgeType, GraphQuery, GraphResult
+from chunkhound.graph.service import GraphService
 
 __all__: list[str] = [
-    "FederationConfig",
-    "FederatedSearchService",
-    "RepoConfig",
+    "Edge",
+    "EdgeType",
+    "GraphQuery",
+    "GraphResult",
+    "GraphService",
 ]
